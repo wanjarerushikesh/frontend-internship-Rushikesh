@@ -1,6 +1,29 @@
-<div *ngIf="allBooks.length > 0">
+<div
+  class="tw-grid tw-place-content-center tw-h-full tw-w-full"
+  *ngIf="isLoading"
+>
+  <front-end-internship-assignment-loader></front-end-internship-assignment-loader>
+</div>
+<!-- -------------------------Handaling all edge cases related to api--------------------- -->
+<div
+  *ngIf="errorMessage"
+  class="tw-grid tw-place-content-center tw-h-full tw-w-full"
+>
+  <h1 class="tw-font-black">OOP'S</h1>
+  <h2 class="tw-font-extrabold">Something went wrong:</h2>
+  <h3>{{ errorMessage }}</h3>
+</div>
+
+<div *ngIf="!isLoading && allBooks.length > 0">
+  <a
+    class="tw-grid tw-place-content-center tw-h-full tw-px-6 tw-border-none tw-py-2 tw-rounded-lg tw-mt-10 hover:tw-cursor-pointer"
+    href="javascript:void(0)"
+    (click)="goBack()"
+  >
+    <button class="background">BACK TO HOME</button>
+  </a>
   <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
+    [booksList]="allBooks"
+    [subjectName]="subjectName"
   ></front-end-internship-assignment-table-view>
 </div>

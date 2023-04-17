@@ -5,21 +5,21 @@
   tw-justify-between
   tw-items-center
   tw-rounded-4-px
+  tw-h-[12%]
   tw-p-12-px
   tw-m-24-px;
   background: linear-gradient(146deg, #e1eeff 19.67%, #ffe4fb 127.56%);
+  
 }
 
 .search-button {
   @apply
-  tw-border 
-  tw-border-solid 
-  tw-border-dark-border
-  tw-rounded-4-px
   tw-flex
-  tw-justify-center
   tw-h-60-px
   tw-w-200-px
+  tw-justify-center 
+  tw-items-center 
+  tw-py-2 tw-px-3
 }
 
 .trending-subjects {
@@ -27,5 +27,18 @@
   tw-bg-table-header-bg
   tw-p-12-px
   tw-rounded-4-px
-  tw-shadow-lg
+  tw-shadow-lg;
+  background: linear-gradient(146deg, #e1eeff 19.67%, #d89acf 127.56%);
+}
+
+.input-box{
+  @apply
+  tw-bg-inherit
+  tw-mx-2 tw-w-full 
+  focus-visible:tw-border-none 
+  tw-p-2
+  tw-rounded-3xl
+  focus-within:tw-border-none;
+  border: 2px solid black;
+  
 }
