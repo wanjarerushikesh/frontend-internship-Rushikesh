@@ -1,79 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormControl } from '@angular/forms';
-// import { debounceTime, filter } from 'rxjs';
-// import { DocsData } from 'src/app/core/models/search-response.models';
-// import { SearchService } from 'src/app/core/services/search/search.service';
-
-// @Component({
-//   selector: 'front-end-internship-assignment-home',
-//   templateUrl: './home.component.html',
-//   styleUrls: ['./home.component.scss'],
-// })
-// export class HomeComponent implements OnInit {
-//   bookSearch: FormControl;
-
-//   isLoading: boolean = false;
-
-//   searchKey: string = '';
-
-//   allBooksDetails: DocsData[] = [];
-
-//   offset: number = 0;
-//   limit: number = 10;
-
-//   errorMessage: string = '';
-
-//   constructor(private searchService:SearchService) {
-//     this.bookSearch = new FormControl('');
-//   }
-
-//   trendingSubjects: Array<any> = [
-//     { name: 'JavaScript' },
-//     { name: 'CSS' },
-//     { name: 'HTML' },
-//     { name: 'Harry Potter' },
-//     { name: 'Crypto' },
-//   ];
-
-//   getBooksByAuthor(offset: number, limit: number){
-//     this.searchService.getBooksByAuthor(this.searchKey,offset, limit).subscribe((data) => {
-//       this.allBooksDetails = data?.docs
-//       this.isLoading = false;
-//     },
-//     (err) => {
-//       this.errorMessage = err.message;
-//       this.isLoading = false;
-//       }
-//     );
-//   }
-
-//   ngOnInit(): void {
-//     this.bookSearch.valueChanges
-//       .pipe(
-//         debounceTime(300),
-//       ).
-//       subscribe((value: string) => {
-
-//         this.searchKey = value;
-//         this.offset = 0;
-//         this.isLoading = true;
-//         this.getBooksByAuthor(this.offset, this.limit);
-//       });
-//   }
-
-//   getNextPage() {
-//     this.offset += this.limit;
-//     this.isLoading = true;
-//     this.getBooksByAuthor(this.offset, this.limit);
-//   }
-
-//   getPreviousPage() {
-//     this.offset -= this.limit;
-//     this.isLoading = true;
-//     this.getBooksByAuthor(this.offset, this.limit);
-//   }
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
@@ -160,7 +84,6 @@ export class HomeComponent implements OnInit {
     this.getBooksByAuthor(this.offset, this.limit);
   }
 }
-
 
 // sharerplay
 // import { Component, OnInit } from '@angular/core';
