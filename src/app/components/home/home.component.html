@@ -3,20 +3,10 @@
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
   <div class="search-button">
     <mat-icon class="tw-mt-2 tw-w-5" aria-label="Search Icon">search</mat-icon>
-    <input
-      [formControl]="bookSearch"
-      name="searchKey"
-      type="text"
-      placeholder="Search Books"
-      class="input-box"
-      aria-label="Search Icon"
-    />
-    <button
-      mat-button
-      *ngIf="bookSearch.value"
-      class="tw-ml-4-px tw-bg-inherit tw-border-none tw-px-1"
-      (click)="bookSearch.reset()"
-    >
+    <input [formControl]="bookSearch" name="searchKey" type="text" placeholder="Search Books" class="input-box"
+      aria-label="Search Icon" />
+    <button mat-button *ngIf="bookSearch.value" class="tw-ml-4-px tw-bg-inherit tw-border-none tw-px-1"
+      (click)="bookSearch.reset()">
       <mat-icon class="tw-w-5">close</mat-icon>
     </button>
   </div>
@@ -28,53 +18,44 @@
   <section class="trending-subjects tw-w-30">
     <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
     <ul class="tw-list-none tw-pl-0">
-      <li
-        class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
-        *ngFor="let subject of trendingSubjects"
-        routerLink="/trending-subject/{{ subject.name }}"
-      >
+      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects"
+        routerLink="/trending-subject/{{ subject.name }}">
         {{ subject.name }}
       </li>
     </ul>
   </section>
 
-  <!-- Table-view component in 70% width column -->
-  <div class="tw-w-full tw-place-content-center">
-    <h1  *ngIf="allBooksDetails.length === 0  ;" class="tw-text-center" >A reader lives a thousand lives before he dies So Search for Books.   </h1>
-    <!-------------- Loader----------------->
-    <div
-      class="tw-grid tw-place-content-center tw-h-full tw-w-full"
-      *ngIf="isLoading; else elseBlock"
-    >
-      <front-end-internship-assignment-loader></front-end-internship-assignment-loader>
-    </div>
-    <!-- -------------------------Handaling all edge cases related to api--------------------- -->
-    <div *ngIf="errorMessage" class="tw-grid tw-place-content-center tw-h-full tw-w-full">
-      
-        <h1 class="tw-font-black">OOP'S</h1>
-        <h2 class="tw-font-extrabold">Something went wrong:</h2>
-        <h3>{{ errorMessage }}</h3>
+  <!-- Table-view component  section in 70% width column -->
+  <div class="tw-w-full tw-place-content-center ">
+    <h1 *ngIf="isLoading === 'initial'" class="tw-text-center">
+      A reader lives a thousand lives before he dies So Search for Books.
+    </h1>
+    <!-------------- Loader section----------------->
+    <front-end-internship-assignment-loader *ngIf="isLoading === 'loading'"
+      class="tw-grid tw-place-content-center tw-h-full tw-w-full"></front-end-internship-assignment-loader>
+
+    <!-- -------------------------Error Handaling Section--------------------- -->
+    <div *ngIf="errorMessage" class="tw-grid tw-place-content-center tw-h-full tw-w-full center">
+      <h1 class="tw-font-black">OOP'S</h1>
+      <h2 class="tw-font-extrabold">Something went wrong:</h2>
+      <h3>{{ errorMessage }}</h3>
     </div>
     <!------------------------table-view Component------------------------ -->
-    <ng-template #elseBlock>
-      <div *ngIf="allBooksDetails.length > 0 && bookSearch.value !== null">
-         
-        <front-end-internship-assignment-table-view
-          class="tw-w-full"
-          [allBooksDetails]="allBooksDetails"
-          [searchKey]="searchKey"
-        ></front-end-internship-assignment-table-view>
-        
-        <!-- ----------------pagination------------------ -->
-        <div class="pagination tw-flex tw-justify-center tw-my-4">
-          <button class="tw-px-4 tw-py-2 tw-mx-1 tw-border tw-border-gray-300 tw-rounded tw-text-gray-600" (click)="getPreviousPage()" [disabled]="offset === 0">
-            Previous
-          </button>
-          <button class="tw-px-4 tw-py-2 tw-mx-1 tw-border tw-border-gray-300 tw-rounded tw-text-gray-600" (click)="getNextPage()">
-            Next
-          </button>
-        </div>
+    <div *ngIf="allBooksDetails.length > 0 && isLoading ==='completed'">
+      <front-end-internship-assignment-table-view class="tw-w-full" [allBooksDetails]="allBooksDetails"
+        [searchKey]="searchKey"></front-end-internship-assignment-table-view>
+
+      <!--------------------pagination Section---------------------->
+      <div class="pagination tw-flex tw-justify-center tw-my-4">
+        <button class="tw-px-4 tw-py-2 tw-mx-1 tw-border tw-border-gray-300 tw-rounded tw-text-gray-600"
+          (click)="getPreviousPage()" [disabled]="offset === 0">
+          Previous
+        </button>
+        <button class="tw-px-4 tw-py-2 tw-mx-1 tw-border tw-border-gray-300 tw-rounded tw-text-gray-600"
+          (click)="getNextPage()">
+          Next
+        </button>
       </div>
-    </ng-template>
+    </div>
   </div>
 </div>

@@ -10,10 +10,8 @@ import { DocsData } from 'src/app/core/models/search-response.models';
 export class TableViewComponent {
   @Input() booksList: Book[] = [];
   @Input() subjectName: string = '';
-  
-  //home Component
-  @Input() allBooksDetails: DocsData[]=[];
-  @Input() searchKey:string = '';
 
-  
+  //home Component
+  @Input() allBooksDetails: DocsData[] = [];
+  @Input() searchKey: string = '';
 }

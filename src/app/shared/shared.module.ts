@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TableViewComponent } from './table-view/table-view.component';
 import { MatIconModule } from '@angular/material/icon';
 import { LoaderComponent } from './loader/loader.component';
-// import { LoaderComponent } from './loader/loader.component'; 
 
 @NgModule({
   declarations: [TableViewComponent, LoaderComponent],
