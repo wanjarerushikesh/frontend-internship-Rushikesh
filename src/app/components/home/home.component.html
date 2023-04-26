@@ -41,7 +41,7 @@
       <h3>{{ errorMessage }}</h3>
     </div>
     <!------------------------table-view Component------------------------ -->
-    <div *ngIf="allBooksDetails.length > 0 && isLoading ==='completed'">
+    <div *ngIf="allBooksDetails.length > 0 && isLoading ==='completed' && !errorMessage">
       <front-end-internship-assignment-table-view class="tw-w-full" [allBooksDetails]="allBooksDetails"
         [searchKey]="searchKey"></front-end-internship-assignment-table-view>
 
